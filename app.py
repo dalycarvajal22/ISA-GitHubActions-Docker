@@ -10,7 +10,7 @@ def home():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dalyana Carvajal</title>
+        <title>Dalyana Carvajal J</title>
         <style>
             * {
                 margin: 0;
@@ -96,7 +96,7 @@ def home():
             <h1>Dalyana Carvajal</h1>
             <div class="subtitulo">Bienvenido a mi espacio personal</div>
             <div class="contenido">
-                <p>Hola, soy <strong>Dalyana Carvajal</strong>. Esta es una página web creada con <strong>Python y Flask</strong>.</p>
+                <p>Hola, mi nombre es <strong>Dalyana Carvajal</strong>. Esta es una página web creada con <strong>Python y Flask</strong>.</p>
                 <p>Diseñada con HTML5 y CSS básico, se sirve desde el puerto <code>5000</code>.</p>
                 <p>💡 Puedes modificar el contenido, colores y estilos fácilmente.</p>
             </div>
