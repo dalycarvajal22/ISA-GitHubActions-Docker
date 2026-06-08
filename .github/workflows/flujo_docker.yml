@@ -39,5 +39,5 @@ jobs:
             docker image pull dalyanacarvajal/isa-docker:flaskapp
             docker container stop contflaskdaly
             docker container rm contflaskdaly
-            docker comtainer run -d --name contflaskdaly -p 80:5000
+            docker container run -d --name contflaskdaly -p 80:5000
           
