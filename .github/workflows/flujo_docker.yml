@@ -1,4 +1,5 @@
 name: Construccion de imagen y despliegue con docker en EC2
+
 on:
   push:
     branches: [ "main" ]
@@ -14,30 +15,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Login to Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build ond push
+      - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: 
-          password: true
+          context: .                    # Directorio donde está el Dockerfile
+          push: true                    # Subir la imagen a Docker Hub
           tags: dalyanacarvajal/isa-docker:flaskapp
 
-          
-      - name: Deployment
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
         with:
-          hosts: ${{ secrets.SSH_HOST }} 
-          username: ${{ secrets.SSH_USER }} 
+          host: ${{ secrets.SSH_HOST }}   # Cambiado de 'hosts' a 'host'
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker image pull dalyanacarvajal/isa-docker:flaskapp
-            docker container stop contflaskdaly
-            docker container rm contflaskdaly
-            docker container run -d --name contflaskdaly -p 80:5000
-          
+            docker pull dalyanacarvajal/isa-docker:flaskapp
+            docker stop contflaskdaly || true
+            docker rm contflaskdaly || true
+            docker run -d --name contflaskdaly -p 8080:5000 dalyanacarvajal/isa-docker:flaskapp
