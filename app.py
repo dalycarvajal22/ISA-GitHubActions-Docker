@@ -101,7 +101,7 @@ def home():
                 <p>💡 Puedes modificar el contenido, colores y estilos fácilmente.</p>
             </div>
             <footer>
-                Flask · Puerto 5000 · Dalyana Carvajal
+                Flask · Puerto 5000 · Universidad Tecnica del Norte
             </footer>
         </div>
     </body>
